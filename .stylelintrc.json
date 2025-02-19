@@ -7,7 +7,7 @@
         "stylelint-order"
     ],
     "rules": {
-        "indentation": "tab",
+        "indentation": 4,
         "color-hex-case": "upper"
     }
 }
