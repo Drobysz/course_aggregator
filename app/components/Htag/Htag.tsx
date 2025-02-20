@@ -2,7 +2,7 @@ import Htagprops from "./Htag.props";
 import styles from './Htag.module.scss'
 import { JSX } from "react";
 
-export default function Htag ({tag, children}: Htagprops): JSX.Element {
+export function Htag ({tag, children}: Htagprops): JSX.Element {
     console.log(styles.h1)
     console.log(styles.h2)
     console.log(styles.h3)
