@@ -4,11 +4,13 @@
 
 :root {
     --black: #3B434E;
+    --grey-light: #9A9898;
     --white: white;
     --primary: #7653FC;
+    --primary-hover: #463295;
     --red: #DE0000;
     --orange: #FC836D;
     --green: #1DC37E;
-    --light-green: #C8F8E4;
+    --green-light: #C8F8E4;
     --noto-sans: 'Noto Sans', sans-serif;
 }
