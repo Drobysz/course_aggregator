@@ -1,0 +1,12 @@
+.btn{
+    @apply rounded-[0.313rem] p-[0.625rem] font-normal text-[0.875rem] cursor-pointer text-center border-none
+}
+
+.primary{
+    @apply text-[var(--white)] bg-[var(--primary)] transition-all ease-in-out duration-200 hover:bg-[var(--primary-hover)]
+}
+
+.ghost{
+    border: 1px solid var(--grey-light);
+    @apply text-[var(--black)] bg-[var(--white)]
+}
