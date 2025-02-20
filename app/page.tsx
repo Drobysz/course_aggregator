@@ -1,9 +1,10 @@
-// import Image from "next/image";
+import {Htag, Btn} from './components/index'
 
 export default function Home() {
   return (
     <div>
-      NotoSans
+      <Htag tag="h1">Text</Htag>
+      <Btn appearence='ghost'>Learn more</Btn>
     </div>
   );
 }
