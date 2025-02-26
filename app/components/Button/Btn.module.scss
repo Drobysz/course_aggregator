@@ -1,5 +1,5 @@
 .btn{
-    @apply rounded-[0.313rem] p-[0.625rem] font-normal text-[0.875rem] cursor-pointer text-center border-none
+    @apply rounded-[0.313rem] p-[0.625rem] font-normal text-[0.875rem] flex gap-x-2.5 cursor-pointer text-center border-none
 }
 
 .primary{
@@ -8,5 +8,17 @@
 
 .ghost{
     border: 1px solid var(--grey-light);
-    @apply text-[var(--black)] bg-[var(--white)]
+    @apply text-[var(--black)] bg-[var(--white)] box-content hover:text-[var(--white)] hover:border-0 hover:bg-[var(--primary)] duration-200 transition-all
+}
+
+.arrow{
+    @apply inline-block rotate-0
+}
+
+.down:hover{
+    @apply rotate-90 duration-200 transition-all w-[calc(100%+2px)] h-[calc(100%+2px)]
+}
+
+.primary span img{
+    fill: var(--white)
 }
