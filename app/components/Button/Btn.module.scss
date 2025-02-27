@@ -1,5 +1,5 @@
 .btn{
-    @apply rounded-[0.313rem] p-[0.625rem] font-normal text-[0.875rem] flex gap-x-2.5 cursor-pointer text-center border-none
+    @apply rounded-[0.313rem] p-[0.625rem] font-normal text-[0.875rem] flex items-center gap-x-2.5 cursor-pointer text-center border-none
 }
 
 .primary{
@@ -8,17 +8,27 @@
 
 .ghost{
     border: 1px solid var(--grey-light);
-    @apply text-[var(--black)] bg-[var(--white)] box-content hover:text-[var(--white)] hover:border-0 hover:bg-[var(--primary)] duration-200 transition-all
+    @apply text-[var(--black)] bg-[var(--white)] box-content hover:text-[var(--white)] duration-200 transition-all
 }
 
+.ghost:hover{
+    @apply border-0 bg-[var(--primary)] border-[var(--primary)]
+}
+
+// Arrow
 .arrow{
-    @apply inline-block rotate-0
+    @apply inline-block
 }
 
-.down:hover{
-    @apply rotate-90 duration-200 transition-all w-[calc(100%+2px)] h-[calc(100%+2px)]
+.down{
+    @apply rotate-90 duration-200 transition-all
 }
 
-.primary span img{
+.right{
+    @apply rotate-0 duration-200 transition-all
+}
+
+.primary svg,
+.ghost:hover svg{
     fill: var(--white)
 }
