@@ -1,5 +1,8 @@
-import "./globals.css";
+import {Header} from "./layout/Header"
+import {Sidebar} from "./layout/Sidebar"
+import {Footer} from "./layout/Footer"
 
+import "./layout/globals.css";
 import { Noto_Sans } from 'next/font/google'
 
 const notoSans = Noto_Sans({
@@ -11,7 +14,14 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
   return (
     <html lang="ru" className={notoSans.className}> 
       <body>
-        {children}
+        <Header/>
+        <div>
+          <Sidebar/>
+          <div>
+            {children}
+          </div>
+        </div>
+        <Footer/>
       </body>
     </html>
   );
