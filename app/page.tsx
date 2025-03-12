@@ -6,8 +6,8 @@ import {Htag, Btn, P, Tag, Rating} from './components/index'
 import { MenuItem } from './interfaces/menu.interface';
 
 export default function Home() {
-  const [rating, setRating] = useState<number>(1)
-  const [menu, setMenu] = useState<MenuItem[]>([])
+  const [rating, setRating] = useState<number>(1);
+  const [menu, setMenu] = useState<MenuItem[]>([]);
 
   useEffect(()=>{
     async function loadData() {
