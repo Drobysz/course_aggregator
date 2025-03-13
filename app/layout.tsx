@@ -7,7 +7,7 @@ import {Footer} from "./layout/Footer"
 import "./layout/globals.css";
 import styles from "./layout/SemanticLayout.module.scss"
 import { Noto_Sans } from 'next/font/google'
-// import { FunctionComponent, JSX } from "react";
+import { AppContextProvider } from './context/app.context'
 
 const notoSans = Noto_Sans({
     subsets: ['latin'],
@@ -19,12 +19,14 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
     <html lang="ru" className={notoSans.className}> 
       <body>
         <div className={styles.wrapper}>
-          <Header className={styles.header}/>
-          <Sidebar className={styles.sidebar}/>
-          <div className={styles.main}>
-            {children}
-          </div>
-          <Footer className={styles.footer}/>
+          <AppContextProvider>
+            <Header className={styles.header}/>
+            <Sidebar className={styles.sidebar}/>
+            <div className={styles.main}>
+              {children}
+            </div>
+            <Footer className={styles.footer}/>
+          </AppContextProvider>
         </div>
         
       </body>

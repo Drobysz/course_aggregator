@@ -1,0 +1,33 @@
+.firstLevel{
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 20px;
+    align-items: center;
+    @apply text-[1.125rem] leading-6 duration-300 ease-in-out font-medium;
+};
+
+.firstLevel:hover,
+.firstLevelActive{
+    @apply text-[var(--primary)];
+};
+
+.secondLevel{
+    @apply cursor-pointer text-[var(--grey-dark)] uppercase text-xs leading-4 font-light;
+};
+
+.secondLevelBlock{
+    @apply flex flex-col gap-0.5;
+};
+
+// .secondLevelBlockIsOpened{
+
+// };
+
+.thirdLevel{
+    @apply cursor-pointer text-[var(--grey-dark)] font-medium text-sm leading-[19px] duration-300 ease-in-out;
+};
+
+.thirdLevel:hover,
+.thirdLevelIsActive{
+    color: var(--primary);
+};
