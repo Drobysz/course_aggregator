@@ -1,11 +1,19 @@
 import { DetailedHTMLProps, HTMLAttributes, FC } from "react";
 import { Menu } from "./Menu/Menu";
+import cn from 'classnames'
+
+// Logo
+import Logo from './Logo'
 
 interface SidebarProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{ }
 
-export const Sidebar: FC<SidebarProps> = ({...props}) => {
+const sideBarStyle: string = "grid content-start gap-5 pt-[2.125rem]";
+
+export const Sidebar: FC<SidebarProps> = ({className, ...props}) => {
     return (
-        <div {...props}>
+        <div className={ cn(className, sideBarStyle) } {...props}>
+            <Logo className="justify-self-center"/>
+            <div>search</div>
             <Menu/>
         </div>
     )

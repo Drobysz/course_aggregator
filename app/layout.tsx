@@ -33,13 +33,3 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
     </html>
   );
 };
-
-// export const withLayout =  <T extends Record<string, unknown>>(Component: FunctionComponent<T>) => {
-//     return function withLayoutComponent(props: T): JSX.Element{
-//         return (
-//           <RootLayout>
-//              <Component {...props}/>
-//           </RootLayout>
-//         );
-//     };
-// };

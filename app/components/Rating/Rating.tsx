@@ -10,7 +10,7 @@ interface Ratingprops extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
     setRating?: (rating: number)=> void;
 }
 
-const basicStyle: string = 'flex gap-[0.313rem] w-fit';
+const basicStyle: string = 'flex last:p-0 w-fit';
 
 export const Rating: FC<Ratingprops> = ({isEditable=false, rating, setRating, ...props}) => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));
@@ -20,7 +20,7 @@ export const Rating: FC<Ratingprops> = ({isEditable=false, rating, setRating, ..
         const updateRating = ratingArray.map((r: JSX.Element, i: number,)=> {
             return(
                 <StarIcon 
-                    className={cn({['cursor-pointer']: isEditable})}
+                    className={cn('transition-all duration-100', {['cursor-pointer']: isEditable})}
                     key={i}
                     fill={i <= (currentRating-1)? '#7653FC' : '#E2E2E2'}
                     onMouseEnter={()=> changeDisplay(i+1)}

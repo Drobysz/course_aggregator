@@ -3,7 +3,7 @@ import { MenuItem } from "../interfaces/menu.interface";
 import { TopPageCategory } from "../interfaces/page.interface";
 
 interface MenuContextInterface {
-    menu: MenuItem[] | Record<string, unknown>[],
+    menu: MenuItem[],
     firstCategory: TopPageCategory,
     setMenu?: (newMenu: MenuItem[])=> void;
 };
@@ -16,7 +16,7 @@ export const AppContext = createContext<MenuContextInterface>(
 );
 
 export const AppContextProvider = ({children}: { children: ReactNode }) => {
-    const [menuState, setMenuState] = useState<MenuItem[] | Record<string, unknown>[]>([]);
+    const [menuState, setMenuState] = useState<MenuItem[]>([]);
     
     const firstCategory = 0;
 

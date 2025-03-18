@@ -1,0 +1,15 @@
+.wrapper {
+    @apply pt-[1.188rem];
+};
+
+.upperHeader {
+    @apply flex justify-between items-center  h-[4.875rem]; 
+};
+
+.pageUpperTitle {
+    @apply flex gap-[1.188rem] items-end;
+};
+
+.filters {
+    @apply flex gap-[2.688rem] items-center;
+};
