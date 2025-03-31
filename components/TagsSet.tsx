@@ -1,5 +1,5 @@
 // Components
-import { Htag, Tag } from "@/app/components/index";
+import { Htag, Tag } from "@/components/index";
 import classNames from "classnames";
 
 // Props

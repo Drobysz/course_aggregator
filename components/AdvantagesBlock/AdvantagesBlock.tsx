@@ -6,7 +6,7 @@ import { Advantage } from '@/app/interfaces/page.interface';
 import { DetailedHTMLProps, HTMLAttributes, FC } from "react";
 
 // Components
-import { Htag } from "@/app/components/index";
+import { Htag } from "@/components/index";
 import Image from 'next/image';
 
 // Dependencies

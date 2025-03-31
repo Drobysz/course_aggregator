@@ -2,12 +2,12 @@
 import styles from './TopPage.module.scss'
 
 // Components
-import { Htag, Tag, HhDataComponent, AdvantageBlock, TagsSet, Sorting } from "@/app/components/index";
+import { Htag, Tag, HhDataComponent, AdvantageBlock, TagsSet, Sorting } from "@/components/index";
 
 // Props
 import TopPageProps from "./TopPage.props";
 import { TopPageCategory } from '@/app/interfaces/page.interface';
-import { SortEnum } from '@/app/components/Sorting/SortingProps';
+import { SortEnum } from '@/components/Sorting/SortingProps';
 import { useReducer } from 'react';
 import { sortReducer } from './sorting.reducer';
 

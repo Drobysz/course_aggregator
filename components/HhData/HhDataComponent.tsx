@@ -1,5 +1,5 @@
 // Components
-import { Card, VacancyRating } from "@/app/components/index";
+import { Card, VacancyRating } from "@/components/index";
 
 // Style
 import styles from './HhData.module.scss'

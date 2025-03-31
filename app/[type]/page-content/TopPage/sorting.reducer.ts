@@ -1,4 +1,4 @@
-import { SortEnum } from "@/app/components/Sorting/SortingProps"
+import { SortEnum } from "@/components/Sorting/SortingProps"
 import { ProductModel } from "@/app/interfaces/product.interface";
 
 export type SortingActions = { type: SortEnum };

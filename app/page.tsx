@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import {Htag, Btn, P, Tag, Rating, Input, TextArea} from './components/index'
+import {Htag, Btn, P, Tag, Rating, Input, TextArea} from '../components/index'
 
 export default function Home() {
   const [rating, setRating] = useState<number>(1);
