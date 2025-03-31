@@ -3,6 +3,6 @@ import { ProductModel } from '../../../interfaces/product.interface'
 
 export default interface TopPageProps {
     firstCategory: number,
-    page?: TopPageModel,
-    product?: ProductModel[]
+    page: TopPageModel,
+    product: ProductModel[]
 }

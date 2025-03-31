@@ -2,8 +2,9 @@
     @apply pt-[1.188rem];
 };
 
+// Upper Page Header
 .upperHeader {
-    @apply flex justify-between items-center  h-[4.875rem]; 
+    @apply flex justify-between items-center  h-[4.875rem] px-2.5; 
 };
 
 .pageUpperTitle {
@@ -12,4 +13,14 @@
 
 .filters {
     @apply flex gap-[2.688rem] items-center;
+};
+
+// Vacancies block
+.hhTitle {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 1.25rem;
+    justify-items: left;
+    margin-bottom: 1.5rem;
 };

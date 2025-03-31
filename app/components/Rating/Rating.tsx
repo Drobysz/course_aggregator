@@ -10,7 +10,7 @@ interface Ratingprops extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, 
     setRating?: (rating: number)=> void;
 }
 
-const basicStyle: string = 'flex last:p-0 w-fit';
+const basicStyle: string = 'flex w-fit';
 
 export const Rating: FC<Ratingprops> = ({isEditable=false, rating, setRating, ...props}) => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>));

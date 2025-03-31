@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import {Htag, Btn, P, Tag, Rating} from './components/index'
+import {Htag, Btn, P, Tag, Rating, Input, TextArea} from './components/index'
 
 export default function Home() {
   const [rating, setRating] = useState<number>(1);
@@ -26,6 +26,8 @@ export default function Home() {
         <Tag color='grey' href='https://www.youtube.com/'>Text</Tag>
         <Tag color='primary'>Text</Tag>
         <Rating rating={rating} setRating={setRating} isEditable />
+        <Input placeholder='test'/>
+        <TextArea />
       </>
   );
 };

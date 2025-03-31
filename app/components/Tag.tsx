@@ -10,7 +10,7 @@ interface Tagprops extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTM
 
 const basicStyle: string = 'inline-flex justify-center items-center rounded-[1.25rem] w-fit px-2.5'
 
-export const Tag: React.FC<Tagprops> =({size='s',color='ghost', href='#', children, className, ...props})=> {
+export const Tag: React.FC<Tagprops> =({size='s',color='ghost', href, children, className, ...props})=> {
     return (
         <div
             className={
@@ -36,5 +36,5 @@ export const Tag: React.FC<Tagprops> =({size='s',color='ghost', href='#', childr
                 : <>{children}</>
             }
         </div>
-    )
-}
+    );
+};
