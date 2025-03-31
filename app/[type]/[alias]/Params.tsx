@@ -29,4 +29,4 @@ export default async function pageWrapper( {params}: {params: {type: string, ali
       return <Page params={params}/>
 }
 
-export const revalidate = 100;
+export const revalidate = 10000;
