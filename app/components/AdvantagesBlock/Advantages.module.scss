@@ -1,0 +1,26 @@
+.AdvantageBlock {
+    @apply flex flex-col gap-[1.688rem] pr-5 mb-[1.875rem];
+};
+
+.articleBlock {
+    @apply flex flex-col gap-[1.875rem];
+};
+
+.article {
+    grid-template-columns: auto 1fr;
+    @apply grid gap-10;
+};
+
+.iconBlock {
+    @apply flex flex-col gap-[1.063rem] justify-center items-center pb-2;
+};
+
+.line {
+    border: 1px solid #D2D2D2;
+    @apply w-0 h-full;
+};
+
+.textBlock {
+    @apply flex flex-col gap-5;
+};
+
