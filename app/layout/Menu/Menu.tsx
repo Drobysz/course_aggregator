@@ -25,10 +25,10 @@ export const Menu: FC<MenuProps> = ({...props}) => {
     const pathname = usePathname();
 
     const firstLevelMenu: firstLevelMenuItem[] = [
-      { route: "courses", name: "Курсы", icon: <CourseIcon fill={ firstCategory === TopPageCategory.Courses ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Courses }, 
-      { route: "services", name: "Сервисы", icon: <ServiceIcon fill={ firstCategory === TopPageCategory.Services ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Services },
-      { route: "books", name: "Книги", icon: <BookIcon fill={ firstCategory === TopPageCategory.Books ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Books },
-      { route: "products", name: "Продукты", icon: <ProductIcon fill={ firstCategory === TopPageCategory.Products ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Products }, 
+      { route: "courses", name: "Courses", icon: <CourseIcon fill={ firstCategory === TopPageCategory.Courses ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Courses }, 
+      { route: "services", name: "Services", icon: <ServiceIcon fill={ firstCategory === TopPageCategory.Services ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Services },
+      { route: "books", name: "Books", icon: <BookIcon fill={ firstCategory === TopPageCategory.Books ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Books },
+      { route: "products", name: "Products", icon: <ProductIcon fill={ firstCategory === TopPageCategory.Products ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Products }, 
     ];
 
     const changeSecondCategory = (secondCategory: string)=> {

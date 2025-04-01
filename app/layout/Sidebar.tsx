@@ -1,5 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes, FC } from "react";
 import { Menu } from "./Menu/Menu";
+import { Search } from '@/components/index'
 import cn from 'classnames'
 
 // Logo
@@ -13,7 +14,7 @@ export const Sidebar: FC<SidebarProps> = ({className, ...props}) => {
     return (
         <div className={ cn(className, sideBarStyle) } {...props}>
             <Logo className="justify-self-center"/>
-            <div>search</div>
+            <Search className="justify-self-center"/>
             <Menu/>
         </div>
     )

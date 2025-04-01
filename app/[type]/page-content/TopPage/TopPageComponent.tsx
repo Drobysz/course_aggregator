@@ -16,15 +16,12 @@ import { sortReducer } from './sorting.reducer';
 
 export default function TopPageComponent({firstCategory, page, product}: TopPageProps){
 
-    // console.log(firstCategory);
-    // console.log(page);
-    console.log(product);
+    // console.log(product);
+
 
     if (Array.isArray(product)) {
-        const [ {products: sortedProducts, sort}, dispatchSort ] = useReducer( sortReducer, { sort: SortEnum.Rating, products: product } );
 
-        console.log(sortedProducts)
-        console.log(sort)
+        const [ {products: sortedProducts, sort}, dispatchSort ] = useReducer( sortReducer, { sort: SortEnum.Rating, products: product } );
 
         return (
         <div className={styles.wrapper}>
@@ -38,22 +35,24 @@ export default function TopPageComponent({firstCategory, page, product}: TopPage
                         ?
                         product?.length
                         :
-                         "Нет продуктов"}
+                         "No products"}
                     </Tag>
                 </div>
-
-                {/* <div className={styles.filters}>
-                    <span>По рейтингу</span>
-                    <span>По цене</span>
-                </div> */}
-                <Sorting sort={sort} setSort={ (sort: SortEnum)=> dispatchSort({type: sort}) } className={styles.filters} />
+                
+                {
+                   product?.length !== 0 &&
+                   (
+                    <Sorting sort={sort} setSort={ (sort: SortEnum)=> dispatchSort({type: sort}) } className={styles.filters} />
+                   ) 
+                }
+                
             </div>
            <div>
               {sortedProducts && sortedProducts.map( p => (<div key={p._id}>{p.title}</div>) )}
            </div>
 
            <div className={styles.hhTitle}>
-               <Htag tag='h2'>Вакансии - {page?.category}</Htag>
+               <Htag tag='h2'>Vacancies - {page?.category}</Htag>
                <Tag color='red' size='s'>hh.ru</Tag>
            </div>
 

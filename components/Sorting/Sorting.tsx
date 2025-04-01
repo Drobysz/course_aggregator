@@ -20,7 +20,7 @@ export const Sorting: FC<SortingProps> = ({sort, setSort, className})=> {
                 })}
                 onClick={ ()=>  setSort(SortEnum.Rating)}
             >
-                 { sort === 0 && <Image width={20} height={13} src='/Filter.svg' alt='#'/> }  По рейтингу
+                 { sort === 0 && <Image width={20} height={13} src='/Filter.svg' alt='#'/> }  By rating
             </span>
             <span
                 className={cn('flex gap-2 cursor-pointer transition-all duration-200', {
@@ -29,7 +29,7 @@ export const Sorting: FC<SortingProps> = ({sort, setSort, className})=> {
                 })}
                 onClick={ ()=>  setSort(SortEnum.Price)}
              >
-                 { sort === 1 && <Image width={20} height={13} src='/Filter.svg' alt='#'/> } По цене
+                 { sort === 1 && <Image width={20} height={13} src='/Filter.svg' alt='#'/> } By price
             </span>
         </div>
     );

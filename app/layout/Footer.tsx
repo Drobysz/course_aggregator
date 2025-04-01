@@ -10,9 +10,9 @@ const linkStyle: string = 'duration-500 transition-all easy-in-out hover:text-[v
 export const Footer: FC<FooterProps> = ({className, ...props}) => {
     return (
         <footer className={cn(className, footerStyle)} {...props}>
-            <p>OwlTop © 2020 - { format(new Date(), 'yyyy') } Все права защищены</p>
-            <a href="#" target="_blank" className={linkStyle}>Пользовательское соглашение</a>
-            <a href="#" target="_blank" className={linkStyle}>Политика конфиденциальности</a>
+            <p>OwlTop © 2020 - { format(new Date(), 'yyyy') } All rights are reserved</p>
+            <a href="#" target="_blank" className={linkStyle}>User agreement</a>
+            <a href="#" target="_blank" className={linkStyle}>Privacy policy</a>
         </footer>
     )
 }

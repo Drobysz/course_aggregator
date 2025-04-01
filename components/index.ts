@@ -11,3 +11,4 @@ export * from './TagsSet';
 export * from './Sorting/Sorting';
 export * from './Input';
 export * from './TextArea';
+export * from './Search';
