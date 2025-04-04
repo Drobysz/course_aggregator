@@ -1,0 +1,13 @@
+.productBlock {
+    grid-template-columns: auto 1fr auto;
+    @apply grid items-center;
+};
+
+.productPanel {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    // pointer-events: none;
+    border-top: 5px solid #EBEBEB;
+    border-bottom: 5px solid #EBEBEB;
+    @apply h-fit py-5 flex items-center gap-8 mb-4;
+};
