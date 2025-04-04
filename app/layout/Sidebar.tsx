@@ -14,7 +14,7 @@ export const Sidebar: FC<SidebarProps> = ({className, ...props}) => {
     return (
         <div className={ cn(className, sideBarStyle) } {...props}>
             <Logo className="justify-self-center"/>
-            <Search className="justify-self-center"/>
+            <Search className="justify-self-end"/>
             <Menu/>
         </div>
     )

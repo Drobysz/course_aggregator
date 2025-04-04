@@ -2,8 +2,8 @@
 
 import Page from './page'
 
-import { MenuItem } from '../../interfaces/menu.interface'
-import { firstLevelMenu } from '@/app/helpers/firstLevelMenu';
+import { MenuItem } from '../../../interfaces/menu.interface'
+import { firstLevelMenu } from '@/helpers/firstLevelMenu';
 
 export async function generateStaticParams (){
     let paths: string[] = [];
@@ -19,8 +19,6 @@ export async function generateStaticParams (){
         const menuJson = await menuResponse.json();
         paths = paths.concat(menuJson.flatMap( (m: MenuItem)=> m.pages.map( (p: { alias: string })=> ({alias: `/${category.route}/${p.alias}`}) )))
     };
-    
-    console.log(paths);
     
     return paths;
 };

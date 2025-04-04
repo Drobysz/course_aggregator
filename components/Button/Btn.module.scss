@@ -1,5 +1,5 @@
 .btn{
-    @apply rounded-[0.313rem] p-[0.625rem] font-normal text-[0.875rem] flex items-center gap-x-2.5 cursor-pointer text-center border-none
+    @apply rounded-[0.313rem] p-2.5 font-normal text-[0.875rem] flex items-center gap-x-2.5 cursor-pointer text-center border-none
 }
 
 .primary{
@@ -12,7 +12,7 @@
 }
 
 .ghost:hover{
-    @apply border-0 bg-[var(--primary)] border-[var(--primary)]
+    @apply bg-[var(--primary)] border-[var(--primary)] box-content
 }
 
 // Arrow

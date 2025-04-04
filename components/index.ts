@@ -12,3 +12,6 @@ export * from './Sorting/Sorting';
 export * from './Input';
 export * from './TextArea';
 export * from './Search';
+export * from './ProductPanel/ProductPanel';
+export * from './PanelScroller';
+export * from './ProductBlock/ProductBlock';

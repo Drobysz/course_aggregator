@@ -1,7 +1,10 @@
 import { SortEnum } from "@/components/Sorting/SortingProps"
-import { ProductModel } from "@/app/interfaces/product.interface";
+import { ProductModel } from "@/interfaces/product.interface";
 
-export type SortingActions = { type: SortEnum };
+export type SortingActions = 
+| { type: SortEnum.Rating }
+| { type: SortEnum.Price }
+| { type: 'SET_PRODUCTS'; payload: ProductModel[] };
 
 export interface SortingReducerState {
     sort: SortEnum,
@@ -14,24 +17,22 @@ export const sortReducer = ( state: SortingReducerState, action: SortingActions 
             
             return {
                 sort: SortEnum.Rating,
-                products:
-                    Array.isArray(state.products)
-                    ?
-                    state.products.sort( (a, b)=> a.initialRating > b.initialRating ? -1 : 1 )
-                    :
-                    []
+                products: [...state.products].sort( (a, b)=> a.initialRating > b.initialRating ? -1 : 1 )
+
             };
 
         case SortEnum.Price:
              
             return {
                 sort: SortEnum.Price, 
-                products:
-                    Array.isArray(state.products)
-                    ?
-                    state.products.sort( (a, b)=> a.price > b.price ? -1 : 1 )
-                    :
-                    []
+                products: [...state.products].sort( (a, b)=> a.price > b.price ? -1 : 1 )
+            };
+
+        case 'SET_PRODUCTS':
+
+            return{
+                ...state,
+                products: action.payload
             };
     
         default:

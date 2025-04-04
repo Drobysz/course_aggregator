@@ -2,8 +2,8 @@
 import styles from './Advantages.module.scss'
 
 // Props
-import { Advantage } from '@/app/interfaces/page.interface';
-import { DetailedHTMLProps, HTMLAttributes, FC } from "react";
+import { Advantage } from '@/interfaces/page.interface';
+import React, { DetailedHTMLProps, HTMLAttributes, FC } from "react";
 
 // Components
 import { Htag } from "@/components/index";
@@ -20,10 +20,10 @@ export const AdvantageBlock: FC<AdvantagesProps> = ({advantages})=>{
 
     return (
         <div className={styles.AdvantageBlock}>
-           <Htag tag='h2'>Преимущества</Htag> 
-           <ul className={styles.articleBlock}>
+           <Htag tag='h2'>Advantages</Htag> 
+           <ul key="skip" className={styles.articleBlock}>
                {
-                advantages?.map( advantage => (<>
+                advantages?.map( advantage => (<React.Fragment key={advantage._id}>
                         {
                             advantage.description !== '' &&
                             (
@@ -52,7 +52,7 @@ export const AdvantageBlock: FC<AdvantagesProps> = ({advantages})=>{
                             )
                         }
                     
-                </>)
+                </React.Fragment>)
                  )
                } 
            </ul>

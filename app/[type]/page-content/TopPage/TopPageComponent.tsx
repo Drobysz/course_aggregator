@@ -2,43 +2,54 @@
 import styles from './TopPage.module.scss'
 
 // Components
-import { Htag, Tag, HhDataComponent, AdvantageBlock, TagsSet, Sorting } from "@/components/index";
+import { Htag, Tag, HhDataComponent, AdvantageBlock, TagsSet, Sorting, ProductBlock } from "@/components/index";
 
 // Props
 import TopPageProps from "./TopPage.props";
-import { TopPageCategory } from '@/app/interfaces/page.interface';
+import { TopPageCategory } from '@/interfaces/page.interface';
 import { SortEnum } from '@/components/Sorting/SortingProps';
-import { useReducer } from 'react';
+
+// Hooks
+import { useEffect, useReducer, useContext } from 'react';
+
+// A function for the reducer
 import { sortReducer } from './sorting.reducer';
 
-// Dependencies
-// import parse from 'html-react-parser'
-
-export default function TopPageComponent({firstCategory, page, product}: TopPageProps){
-
-    // console.log(product);
+// Context
+import { AppContext } from '@/app/context/app.context';
 
 
-    if (Array.isArray(product)) {
+export default function TopPageComponent({firstCategory}: TopPageProps){
+    const { page, product } = useContext(AppContext);
 
-        const [ {products: sortedProducts, sort}, dispatchSort ] = useReducer( sortReducer, { sort: SortEnum.Rating, products: product } );
+    const [ {products: sortedProducts, sort}, dispatchSort ] = useReducer( sortReducer, { sort: SortEnum.Rating, products: [] } );
 
-        return (
+    useEffect(()=>{
+        if ((Array.isArray(product) && (product.length != 0))){
+            dispatchSort({ type: 'SET_PRODUCTS', payload: product });
+        };
+    }, [product]);
+
+    if ( product.length === 0 ) return null;
+    console.log(product);
+    console.log(page);
+
+    return (
         <div className={styles.wrapper}>
+
+            {/* Page Header */}
            <div className={styles.upperHeader}>
                 <div className={styles.pageUpperTitle}>
-                    <Htag tag="h1">
-                        {page?.title}
-                    </Htag>
+                    <div className='inline-block'>
+                         <Htag className='max-w-max' tag="h1">
+                            {page?.title}
+                        </Htag>
+                    </div>
+                   
                     <Tag color="grey" size='m'>
-                        {product?.length !== 0
-                        ?
-                        product?.length
-                        :
-                         "No products"}
+                        {product?.length !== 0 ? product?.length: "No products"}
                     </Tag>
                 </div>
-                
                 {
                    product?.length !== 0 &&
                    (
@@ -46,28 +57,25 @@ export default function TopPageComponent({firstCategory, page, product}: TopPage
                    ) 
                 }
                 
-            </div>
-           <div>
-              {sortedProducts && sortedProducts.map( p => (<div key={p._id}>{p.title}</div>) )}
            </div>
+           
+           {/* Courses */}
+           { sortedProducts && sortedProducts.length != 0 && <ProductBlock className='mb-6' products={sortedProducts}/>}
 
+           {/* HH statistic */} 
            <div className={styles.hhTitle}>
                <Htag tag='h2'>Vacancies - {page?.category}</Htag>
                <Tag color='red' size='s'>hh.ru</Tag>
            </div>
-
            { firstCategory == TopPageCategory.Courses && <HhDataComponent className='mb-[2.938rem]' {...page?.hh}/> }
 
-           { page?.advantages.length !== 0 && <AdvantageBlock advantages={page?.advantages}/>}
-
-           {/* { page?.seoText && <div>{parse(page?.seoText)}</div> } */}
-
-           <TagsSet className='mb-[3.063rem]' tags={page?.tags}/>
+           {/* List with advantages */}
+           { page && page.advantages && page.advantages.length !== 0 && <AdvantageBlock advantages={page!.advantages}/>}
+           
+           {/* Skill tags */}
+           <TagsSet className='mb-[3.063rem]' title='Acquiring skills' color='primary' size='m' tags={page!.tags}/>
 
         </div>
     );
-
-    }
-
     
 };

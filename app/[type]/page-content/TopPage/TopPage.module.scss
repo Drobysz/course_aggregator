@@ -1,18 +1,31 @@
 .wrapper {
-    @apply pt-[1.188rem] px-7;
+    @apply pt-[1.188rem] pl-7;
 };
 
 // Upper Page Header
 .upperHeader {
-    @apply flex justify-between items-center  h-[4.875rem] px-2.5; 
+    @apply flex justify-between items-center h-[4.875rem] px-5; 
 };
 
 .pageUpperTitle {
-    @apply flex gap-[1.188rem] items-end;
+    @apply flex gap-[1.188rem] items-end max-[838px]:gap-2;
 };
 
 .filters {
     @apply flex gap-[2.688rem] items-center;
+};
+
+.productBlock {
+    grid-template-columns: auto 1fr auto;
+    @apply grid items-center;
+};
+
+.productPanel {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    border-top: 5px solid #EBEBEB;
+    border-bottom: 5px solid #EBEBEB;
+    @apply h-fit px-5 py-5 flex items-center gap-8 mb-4;
 };
 
 // Vacancies block

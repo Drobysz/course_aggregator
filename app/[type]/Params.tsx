@@ -2,7 +2,7 @@
 
 import Page from './page'
 
-import { firstLevelMenu } from '@/app/helpers/firstLevelMenu';
+import { firstLevelMenu } from '@/helpers/firstLevelMenu';
 
 export async function generateStaticParams (){
     return firstLevelMenu.map( m => '/' + m.route );

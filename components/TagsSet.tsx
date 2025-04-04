@@ -3,15 +3,23 @@ import { Htag, Tag } from "@/components/index";
 import classNames from "classnames";
 
 // Props
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
+import { Tagprops } from './Tag'
 
-export const TagsSet: FC<Partial<{tags: string[], className: string}>> = ( {tags, className} )=> {
+interface TagsSetProps extends Tagprops {
+    tags: string[],
+    className?: string,
+    title?: string
+    children?: ReactNode
+};
+
+export const TagsSet: FC<TagsSetProps> = ( {tags, className, title, ...props} )=> {
     return (
         <div className={classNames("flex flex-col gap-5", className)}>
-            <Htag tag="h2">Acquiring skills</Htag>
+            {title && <Htag tag="h2">{title}</Htag>}
             <div className="flex flex-wrap gap-2.5">
                 {
-                    tags?.map( tag => <Tag className="h-fit w-fit" key={tag} size="m" color="primary">{tag}</Tag> )
+                    tags?.map( tag => <Tag className="h-fit w-fit" key={tag} {...props}>{tag}</Tag> )
                 }
             </div>
         </div>

@@ -5,11 +5,11 @@ import { Card, VacancyRating } from "@/components/index";
 import styles from './HhData.module.scss'
 
 // Props
-import { HhData } from "@/app/interfaces/page.interface"
+import { HhData } from "@/interfaces/page.interface"
 import { FC } from "react"
 
 // Functions
-import { priceDecorator } from "@/app/helpers/usefulFuncs";
+import { priceDecorator } from "@/helpers/usefulFuncs";
 
 // Dependencies
 import cn from 'classnames'

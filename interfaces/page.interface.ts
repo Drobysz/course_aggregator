@@ -1,8 +1,8 @@
 export enum TopPageCategory {
-  Courses,
-  Services,
-  Books,
-  Products
+  Courses=0,
+  Services=1,
+  Tutors=4,
+  Products=3
 }
 
 export interface TopPageModel {

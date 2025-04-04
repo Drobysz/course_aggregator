@@ -1,10 +1,12 @@
+'use client';
+
 import { DetailedHTMLProps, HTMLAttributes, FC } from "react";
 import { AppContext } from './../../context/app.context';
 import { useContext } from 'react';
-import { TopPageCategory } from "@/app/interfaces/page.interface";
+import { TopPageCategory } from "@/interfaces/page.interface";
 import cn from 'classnames';
 import Link from "next/link";
-import { firstLevelMenuItem, PageItem } from "@/app/interfaces/menu.interface";
+import { firstLevelMenuItem, PageItem } from "@/interfaces/menu.interface";
 import { usePathname } from "next/navigation";
 
 // Styles
@@ -14,21 +16,19 @@ import styles from './menu.module.scss'
 import CourseIcon from "./icons/Course_Icon";
 import ServiceIcon from "./icons/Service_Icon";
 import BookIcon from "./icons/Book_Icon";
-import ProductIcon from "./icons/Product_Icon";
 
 
 interface MenuProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{ }
 
 export const Menu: FC<MenuProps> = ({...props}) => {
 
-    const { menu, firstCategory, setMenu } = useContext(AppContext);
+    const { menu, firstCategory, setMenu, setFirstCategory } = useContext(AppContext);
     const pathname = usePathname();
 
     const firstLevelMenu: firstLevelMenuItem[] = [
-      { route: "courses", name: "Courses", icon: <CourseIcon fill={ firstCategory === TopPageCategory.Courses ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Courses }, 
-      { route: "services", name: "Services", icon: <ServiceIcon fill={ firstCategory === TopPageCategory.Services ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Services },
-      { route: "books", name: "Books", icon: <BookIcon fill={ firstCategory === TopPageCategory.Books ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Books },
-      { route: "products", name: "Products", icon: <ProductIcon fill={ firstCategory === TopPageCategory.Products ? '#7653FC' : '#787D85' }/>, id: TopPageCategory.Products }, 
+      { route: "courses", name: "Courses", icon: <CourseIcon fill={ firstCategory === TopPageCategory.Courses ? '#086DFD' : '#787D85' }/>, id: TopPageCategory.Courses }, 
+      { route: "services", name: "Services", icon: <ServiceIcon fill={ firstCategory === TopPageCategory.Services ? '#086DFD' : '#787D85' }/>, id: TopPageCategory.Services },
+      { route: "tutors", name: "Tutors", icon: <BookIcon fill={ firstCategory === TopPageCategory.Tutors ? '#086DFD' : '#787D85' }/>, id: TopPageCategory.Tutors },
     ];
 
     const changeSecondCategory = (secondCategory: string)=> {
@@ -54,9 +54,11 @@ export const Menu: FC<MenuProps> = ({...props}) => {
           {firstLevelMenu.map( menu=> (
             
             <div className="flex flex-col gap-5" key={menu.route}>
-                <Link href={`/${menu.route}`}>
-                    <div className={cn(styles.firstLevel, {
+                <Link onClick={ ()=> setFirstCategory!(menu.id) } href={`/${menu.route}`}>
+                    <div
+                     className={cn(styles.firstLevel, {
                       [styles.firstLevelActive]: menu.id === firstCategory,
+                      
                     })}>
                         {menu.icon}
                         <span>{menu.name}</span>
