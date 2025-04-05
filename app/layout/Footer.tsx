@@ -5,7 +5,7 @@ import { format } from "date-fns"
 interface FooterProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{ }
 
 const footerStyle: string = 'bg-[var(--primary)] text-white px-[30px] py-[25px] text-base leading-5 gap-x-10 gap-y-2.5';
-const linkStyle: string = 'duration-500 transition-all easy-in-out hover:text-[var(--grey-light)]'
+const linkStyle: string = 'duration-500 transition-all easy-in-out hover:text-[#d3d2d2]'
 
 export const Footer: FC<FooterProps> = ({className, ...props}) => {
     return (
