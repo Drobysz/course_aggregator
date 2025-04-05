@@ -13,7 +13,7 @@ const sideBarStyle: string = "grid content-start gap-5 pt-[1.125rem]";
 export const Sidebar: FC<SidebarProps> = ({className, ...props}) => {
     return (
         <div className={ cn(className, sideBarStyle) } {...props}>
-            <Image src="/skill-aggregator-logo.png" alt="Logo" width="159" height="44" className="justify-self-center"/>
+            <Image src="/skill-aggregator-logo.png" alt="Logo" width="159" height="44" className="justify-self-center rounded-2xl"/>
             {/* <Logo className="justify-self-center"/> */}
             <Search className="justify-self-end"/>
             <Menu/>
