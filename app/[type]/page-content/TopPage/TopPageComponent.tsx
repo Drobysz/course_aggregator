@@ -3,6 +3,7 @@ import styles from './TopPage.module.scss'
 
 // Components
 import { Htag, Tag, HhDataComponent, AdvantageBlock, TagsSet, Sorting, ProductBlock } from "@/components/index";
+import { Spin } from 'antd';
 
 // Props
 import TopPageProps from "./TopPage.props";
@@ -30,7 +31,7 @@ export default function TopPageComponent({firstCategory}: TopPageProps){
         };
     }, [product]);
 
-    if ( product.length === 0 ) return null;
+    if ( product.length === 0 ) return <div className='h-full flex justify-center items-center'><Spin size='large' /></div>;
     console.log(product);
     console.log(page);
 
