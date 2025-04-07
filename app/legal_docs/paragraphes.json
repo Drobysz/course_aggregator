@@ -1,0 +1,36 @@
+[
+    {
+        "id": "#part1",
+        "key": "part1",
+        "title": "1. General Provisions",
+        "text": "This section contains key legal information governing the use of the Skill Aggregator platform. We are committed to transparency, safety, and building trust between users and educational partners. By using our website, you agree to the terms outlined here."
+    },
+
+    {
+        "id": "#part2",
+        "key": "part2",
+        "title": "2. User Agreement",
+        "text": "The User Agreement outlines the rights and responsibilities of all parties using the platform — both individuals and educational institutions. We do not provide educational services ourselves; instead, we offer an informational platform for discovering, comparing, and selecting them."
+    },
+
+    {
+        "id": "#part3",
+        "key": "part3",
+        "title": "3. Privacy Policy",
+        "text": "We respect your privacy and are committed to protecting your personal data. This section explains what data we collect, how we store and process it, and under what circumstances we may share it with third parties — always in accordance with the law."
+    },
+
+    {
+        "id": "#part4",
+        "key": "part4",
+        "title": "4. Partner Terms",
+        "text": "Private schools and educational centers listing courses on the platform must comply with the Partner Agreement. It governs the terms of course publication, the accuracy of provided information, and liability for educational services offered."
+    },
+
+    {
+        "id": "#part5",
+        "key": "part5",
+        "title": "5. Disclaimer and Liability",
+        "text": "The platform is not responsible for course content, accuracy, or learning outcomes. We provide information \"as is\" and make no guarantees that choosing a course will lead to specific results."
+    }
+]

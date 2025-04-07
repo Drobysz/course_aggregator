@@ -1,0 +1,4 @@
+.wrapper {
+    @apply grid h-full pl-10 pr-3 gap-8;
+    grid-template-columns: 1fr auto;
+};

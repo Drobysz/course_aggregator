@@ -1,3 +1,5 @@
+'use client'
+
 // Components
 import { Card, Rating, P, Btn, Htag, TagsSet, Tag } from "@/components/index";
 import Image from "next/image";

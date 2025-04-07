@@ -1,3 +1,5 @@
+'use client'
+
 // Components
 import { PanelScroller, ProductPanel  } from '@/components/index';
 import ArrowIcon from '@/components/Button/ArrowIcon';
@@ -51,7 +53,7 @@ export const ProductBlock: FC<ProductBlockProps> = ( { className, products } )=>
                 >
                     <ArrowIcon className='rotate-180' height='30' width='18'/>
                 </div>
-                
+                    
                 <div className={styles.productPanel}>
                     {products.map( p => <ProductPanel
                      productModel={p}

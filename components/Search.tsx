@@ -1,3 +1,5 @@
+'use client'
+
 // Props
 import { FC, DetailedHTMLProps, HTMLAttributes, useState } from "react"
 

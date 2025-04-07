@@ -1,4 +1,10 @@
+// Components
+import Link from "next/link";
+
+// Props
 import { DetailedHTMLProps, HTMLAttributes, FC } from "react";
+
+// Dependencies
 import cn from "classnames"
 import { format } from "date-fns"
 
@@ -11,8 +17,8 @@ export const Footer: FC<FooterProps> = ({className, ...props}) => {
     return (
         <footer className={cn(className, footerStyle)} {...props}>
             <p>OwlTop © 2020 - { format(new Date(), 'yyyy') } All rights are reserved</p>
-            <a href="#" target="_blank" className={linkStyle}>User agreement</a>
-            <a href="#" target="_blank" className={linkStyle}>Privacy policy</a>
+            <Link href="/legal_docs" className={linkStyle}>Legal docs</Link>
+            <Link href="#" className={linkStyle}>About the project</Link>
         </footer>
     )
 }
