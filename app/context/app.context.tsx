@@ -1,7 +1,13 @@
+//  Hooks
 import { createContext, ReactNode, useEffect, useState } from "react";
-import { MenuItem } from "@/interfaces/menu.interface";
+
+// Props
+import { MenuItem, firstLevelMenuItem } from "@/interfaces/menu.interface";
 import { TopPageCategory, TopPageModel } from "@/interfaces/page.interface";
 import { ProductModel } from "@/interfaces/product.interface";
+
+// Components
+import { firstLevelMenu } from '@/helpers/firstLevelMenu';
 
 interface MenuContextInterface {
     menu: MenuItem[],
@@ -9,10 +15,13 @@ interface MenuContextInterface {
     product: ProductModel[],
 
     firstCategory: TopPageCategory,
-    contextAlias: string;
+    contextAlias: string,
+
+    firstCategoryItem: firstLevelMenuItem
 
     setMenu?: (newMenu: MenuItem[])=> void,
     setFirstCategory?: (num: TopPageCategory)=> void;
+    setFirstCategoryWithRoute?: (route: string)=> void;
     setAlias?: (alias: string)=> void;
 };
 
@@ -22,17 +31,18 @@ export const AppContext = createContext<MenuContextInterface>(
         page: null,
         product: [],
         firstCategory: TopPageCategory.Courses,
-        contextAlias: ''
+        contextAlias: '',
+        firstCategoryItem: firstLevelMenu[0]
     }
 );
 
 export const AppContextProvider = ({children}: { children: ReactNode }) => {
     
-    // States of Menu, Page, Products
+    // States of Menu, Page, Products, FirstItemMenu
     const [ menuState, setMenuState ] = useState<MenuItem[]>([]);
     const [ pageState, setPage ] = useState<TopPageModel>();
     const [ productState, setProduct ] = useState<ProductModel[]>([]);
-
+    const [ firstCategoryItem, setFirstCategoryItem ] = useState<firstLevelMenuItem>()
 
     // Category state
     const [firstCategory, setFirstCategoryState] = useState<TopPageCategory>(TopPageCategory.Courses);
@@ -91,8 +101,14 @@ export const AppContextProvider = ({children}: { children: ReactNode }) => {
     const setMenu = (newMenu: MenuItem[])=> setMenuState(newMenu);
     const setFirstCategory = (category: TopPageCategory)=> setFirstCategoryState(category);
     const setAlias = (alias: string)=> setAiasState(alias);
+    const setFirstCategoryWithRoute = ( route: string )=> {
+        const firstCategoryItemState = firstLevelMenu.find( m => m.route === route );
+        console.log('CONTEXT CATEGORY ITEM',firstCategoryItemState);
+        setFirstCategoryItem(firstCategoryItemState);
+        setFirstCategory(firstCategoryItemState!.id);
+    };
    
-    return <AppContext.Provider value={ { menu: menuState, page: pageState!, product: productState, firstCategory: firstCategory, contextAlias: contextAlias, setMenu, setFirstCategory, setAlias } } >
+    return <AppContext.Provider value={ { menu: menuState, page: pageState!, product: productState, firstCategory: firstCategory, contextAlias: contextAlias, firstCategoryItem: firstCategoryItem!, setMenu, setFirstCategory, setFirstCategoryWithRoute, setAlias } } >
     {children}
 </AppContext.Provider>
 };

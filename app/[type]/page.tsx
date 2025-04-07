@@ -1,10 +1,9 @@
 'use client';
 
 // Hooks
-import { use, useContext, useEffect, useState } from "react";
+import { use, useContext } from "react";
 
 // Components
-import { firstLevelMenu } from '@/helpers/firstLevelMenu';
 import { CategoryPage } from '@/app/[type]/page-content/CategoryPage/CategoryPage';
 
 // Dependencies
@@ -13,25 +12,18 @@ import { Spin } from "antd";
 // Context
 import { AppContext } from '@/app/context/app.context';
 
-// Props
-import { firstLevelMenuItem } from "@/interfaces/menu.interface";
-
 export default function Page({params}: { params: Promise<{ type: string }> }){
 
     const { type } = use(params);
-    const { menu, setFirstCategory } = useContext(AppContext);
-    const [firstCategoryItem, setFirstCategoryItem] = useState<firstLevelMenuItem>();
-
-    useEffect(()=>{
-        const firstCategoryItem = firstLevelMenu.find( m => m.route === type );
-        setFirstCategoryItem(firstCategoryItem);
-        setFirstCategory!(firstCategoryItem!.id);
-    }, [type]);
+    const { menu, setFirstCategoryWithRoute, firstCategoryItem } = useContext(AppContext);
+   
+    console.log('CATEGORY : ', type);
+    setFirstCategoryWithRoute!(type);
+    
+    console.log('CATEGORY ITEM : ', firstCategoryItem);
 
     if ( (!firstCategoryItem) || (firstCategoryItem === undefined) ){
-         <Spin size='large'/>
-    } else {
-        setFirstCategory!(firstCategoryItem.id)
+        return <div className="h-full flex justify-center items-center"><Spin size='large'/>;</div>
     };
 
 
