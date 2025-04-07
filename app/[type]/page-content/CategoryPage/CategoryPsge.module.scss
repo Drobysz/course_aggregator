@@ -1,0 +1,22 @@
+.cardbox {
+    @apply grid gap-x-3 gap-y-4 mb-10;
+    grid-template-columns: 1fr 1fr 1fr;
+};
+
+.cardElement {
+    @apply cursor-pointer text-[var(--grey-dark)] font-medium text-sm leading-[19px] duration-300 ease-in-out hover:text-[var(--primary)]; 
+};
+
+@media (max-width: 1155px) {
+    .cardbox {
+        @apply grid justify-center gap-x-3 gap-y-4 mb-10;
+        grid-template-columns: 300px 300px;
+    };
+};
+
+@media (max-width: 858px) {
+    .cardbox {
+        @apply grid justify-center gap-x-3 gap-y-4 mb-10;
+        grid-template-columns: 300px;
+    };
+};
