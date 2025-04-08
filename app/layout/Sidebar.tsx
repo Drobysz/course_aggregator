@@ -23,9 +23,8 @@ export const Sidebar: FC<SidebarProps> = ({className, ...props}) => {
                 <Image src="/skill-aggregator-logo.png" alt="Logo" width="159" height="44" className="justify-self-center rounded-2xl"/>
             </Link>
             
-            {/* <Logo className="justify-self-center"/> */}
             <Search className="justify-self-end"/>
-            <Menu/>
+            <Menu className="pl-4"/>
         </div>
     )
 }
