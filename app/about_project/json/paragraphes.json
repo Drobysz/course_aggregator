@@ -1,0 +1,19 @@
+[
+    {
+        "title": "#What is the project about",
+        "key": "about",
+        "text": "The project itself is an aggregator of paid courses of modern professions in the Internet. Its name is self-explanatory."
+    },
+
+    {
+        "title": "#Reasons for creation of the project",
+        "key": "how",
+        "text": "1) Front-end was implemented on React/TypeScript/Tailwind;<br><br>2) NextJS was used for Routing realisation with Incremental Static Generation of the pages;<br><br>3) Data was fetched from API of the website of labour exchange of the Russian Federation"
+    },
+
+    {
+        "title": "#Reasons for creation of the project",
+        "key": "why",
+        "text": "The main aim to create the site was to practice all aquired knowledges of React, TypeScript, Tailwind and NextJS"
+    }
+]

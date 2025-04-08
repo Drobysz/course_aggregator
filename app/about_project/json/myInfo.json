@@ -1,0 +1,7 @@
+[
+    { "type": "first name/last name", "value": "Alexander<br> Drobyshevski" },
+    { "type": "Educational<br> institution", "value": "Université<br> de Gustave Eiffel" },
+    { "type": "Formation/Program", "value": "MMI" },
+    { "type": "Vocation", "value": "Fullstack<br> Web Developer" },
+    { "type": "The other", "value": "the other info<br> you can find<br> by following the links<br> attached below" }
+]

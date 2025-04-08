@@ -12,7 +12,7 @@ import cn from 'classnames'
 // Image
 import Image from "next/image";
 
-interface SidebarProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{ }
+type SidebarProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
 const sideBarStyle: string = "grid content-start gap-5 pt-[1.125rem]";
 

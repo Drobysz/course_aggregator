@@ -1,0 +1,13 @@
+.wrapper {
+    @apply grid gap-4 px-5 mb-20;
+    grid-template-columns: 1fr auto;
+};
+
+.creatorPage {
+    border: 2px solid var(--primary);
+};
+
+.wikiGrid {
+    @apply grid gap-4;
+    grid-template-columns: 1fr 1fr;
+};

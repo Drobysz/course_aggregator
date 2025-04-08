@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes, FC } from "react";
 
-interface HeaderProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{ }
+type HeaderProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
 export const Header: FC<HeaderProps> = ({...props}) => {
     return (
