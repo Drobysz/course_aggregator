@@ -1,33 +1,58 @@
 'use client'
 
-import { useState } from 'react';
-import {Htag, Btn, P, Tag, Rating, Input, TextArea} from '../components/index'
+// Hooks
+import { useContext, useState, useEffect } from 'react'; 
+
+// Props
+import { TopPageCategory } from "@/interfaces/page.interface";
+
+// Components
+import Image from 'next/image';
+import { Typewriter } from '@/components/index';
+
+// Fonts
+import { robotoMono, oswald, quicksand } from '@/fonts/fonts'
+
+// Dependencies
+import cn from 'classnames';
+
+// Context
+import { AppContext } from '@/app/context/app.context';
 
 export default function Home() {
-  const [rating, setRating] = useState<number>(1);
+  const [ textValue, setTextValue ] = useState<string>('python');
+  const { setFirstCategory, menu } = useContext(AppContext);
+  setFirstCategory!(TopPageCategory.Courses)
+
+  // const categories = menu.flatMap(m => m.pages.map(p => p.category));
+
+  useEffect(() => {
+    if (!menu || menu.length === 0) return;
+  
+    const categories = menu.flatMap(m => m.pages.map(p => p.category));
+    let i = 0;
+  
+    const interval = setInterval(() => {
+      setTextValue(categories[i]);
+      console.log(i,' ',categories[i], '--', textValue)
+      i = (i + 1) % categories.length;
+    }, 5000);
+  
+    return () => clearInterval(interval);
+  }, [menu]);
 
   return (
-      <>
-        <Htag tag="h1">Text</Htag>
-
-        {/* Buttons */}
-        <Btn appearence='primary' arrow='right'>Start</Btn>
-        <Btn appearence='ghost' arrow='down'>Learn more</Btn>
-        
-        {/* Paragraphs */}
-        <P size='s'>Small</P> 
-        <P>Medium</P> 
-        <P size='l'>Huge</P> 
-
-        {/* Tags */}
-        <Tag>Text</Tag>
-        <Tag color='green'>Text</Tag>
-        <Tag color='red'>Text</Tag>
-        <Tag color='grey' href='https://www.youtube.com/'>Text</Tag>
-        <Tag color='primary'>Text</Tag>
-        <Rating rating={rating} setRating={setRating} isEditable />
-        <Input placeholder='test'/>
-        <TextArea />
-      </>
+      <div className='flex justify-center pt-20 h-full'>
+          <div className='flex flex-col gap-8 items-center'>
+            <Image className='rounded-3xl' src='/skill-aggregator-logo.png' alt='#logo' width={200} height={100}/>
+            <div>
+              <h1 className={ cn( 'text-5xl text-center pt-5 mb-4 text-[var(--black)]', oswald.className ) } > Welcome to the Skill Aggregator</h1>
+              <h1 className={ cn( 'text-3xl text-center text-[var(--grey-dark)', quicksand.className ) }> 
+                Find an appropriate course for <Typewriter className={ cn( robotoMono.className, 'font-bold text-[var(--primary)]' ) } delay={100} text={textValue}  />
+              </h1>
+            </div>
+            
+          </div>
+      </div>
   );
 };

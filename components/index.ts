@@ -15,3 +15,4 @@ export * from './Search';
 export * from './ProductPanel/ProductPanel';
 export * from './PanelScroller';
 export * from './ProductBlock/ProductBlock';
+export * from './Typewriter';

@@ -11,27 +11,18 @@ import { Anchor, Divider } from 'antd';
 import cn from 'classnames';
 
 // JSON
-import paragraphes from './paragraphes.json'
+import paragraphes from './paragraphes.json';
 // Styles
-import styles from './legal.module.scss'
+import styles from './legal.module.scss';
 
 // Fonts
-import { Roboto_Mono, Oswald, Quicksand } from 'next/font/google'
+import { robotoMono, oswald, quicksand } from '@/fonts/fonts';
 
-const robotoMono = Roboto_Mono({
-    subsets: ['latin'],
-    display: 'swap',
-  });
-
-const quicksand = Quicksand({
-    subsets: ['latin'],
-    display: 'swap',
-  });
-
-const oswald = Oswald({
-    subsets: ['latin'],
-    display: 'swap',
-  });
+// const buildAnchorLinks = ()=> {
+//     paragraphes.map( pAnchor => {
+//         return  { key: pAnchor.key, href: pAnchor.id, title: pAnchor.title };
+//     } )
+// };
 
 export default function Page (){
 
@@ -47,6 +38,19 @@ export default function Page (){
             <div className='flex flex-col gap-10'>
                 <h1 className={ cn( 'text-5xl text-center pt-10', oswald.className ) }>Legal articles</h1>
 
+                <div className='hidden justify-center min-[1040px]:flex'>
+                    <Anchor
+                    direction='horizontal'
+                    targetOffset={targetOffSet}
+                    items={
+                        paragraphes.map( pAnchor => {
+                            return  { key: pAnchor.key, href: pAnchor.id, title: pAnchor.title };
+                        } )
+                     }
+                    />
+
+                </div>
+                
                 <ul className='flex flex-col gap-20 mb-24'>
                     {
                         paragraphes.map( p => (
@@ -59,13 +63,12 @@ export default function Page (){
                     }
                 </ul> 
 
-                <Htag tag='h1' className='mb-14'>Thanks for your attention.</Htag>
+                <Htag tag='h1' className='mb-14 self-center'>Thanks for your attention!</Htag>
             </div>
-            <div className='flex flex-col gap-5 pt-5'>
+            <div className='hidden max-[1040px]:flex flex-col gap-5 pt-5'>
                 <Htag tag='h1' className='self-center'>Content</Htag>
 
                 <Anchor
-                    className={ cn( '', robotoMono.className ) }
                     targetOffset={targetOffSet}
                     items={
                         paragraphes.map( pAnchor => {

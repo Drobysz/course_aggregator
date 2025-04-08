@@ -18,7 +18,7 @@ export const Footer: FC<FooterProps> = ({className, ...props}) => {
         <footer className={cn(className, footerStyle)} {...props}>
             <p>OwlTop © 2020 - { format(new Date(), 'yyyy') } All rights are reserved</p>
             <Link href="/legal_docs" className={linkStyle}>Legal docs</Link>
-            <Link href="#" className={linkStyle}>About the project</Link>
+            <Link href="/about_project" className={linkStyle}>About the project</Link>
         </footer>
     )
 }
