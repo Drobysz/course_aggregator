@@ -43,11 +43,9 @@ export default function TopPageComponent({firstCategory}: TopPageProps){
             {/* Page Header */}
            <div className={styles.upperHeader}>
                 <div className={styles.pageUpperTitle}>
-                    <div className='inline-block'>
-                         <Htag className='max-w-max' tag="h1">
-                            {page?.title}
-                        </Htag>
-                    </div>
+                    <Htag className='max-w-max' tag="h1">
+                        {page?.title}
+                    </Htag>
                    
                     <Tag color="grey" size='m'>
                         {product?.length !== 0 ? product?.length: "No products"}
