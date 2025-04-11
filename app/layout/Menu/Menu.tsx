@@ -18,7 +18,7 @@ import ServiceIcon from "./icons/Service_Icon";
 import BookIcon from "./icons/Book_Icon";
 
 
-interface MenuProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{ }
+type MenuProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
 export const Menu: FC<MenuProps> = ({...props}) => {
 
@@ -42,12 +42,6 @@ export const Menu: FC<MenuProps> = ({...props}) => {
     }
 
     const buildFirstLevelMenu = ()=> {
-
-      // menu.map( m => {
-      //   if( m.pages.map(p => p.alias).includes(pathname.split('/')[2]) ){
-      //     m.isOpened = true;
-      //   }
-      // } )
 
       return (
         <div className="flex flex-col gap-3 mb-10">

@@ -1,41 +1,36 @@
-'use client'
+// Funcs
+import { getPage } from '@/helpers/getDateFuncs';
 
 // Props
 import { firstLevelMenu } from '@/helpers/firstLevelMenu';
 
 // Hooks + Next Nav
-import { useEffect, useContext, use } from "react";
 import { notFound } from 'next/navigation';
 
-// Context
-import { AppContext } from '@/app/context/app.context';
-
 // Components
+import { Suspense } from 'react';
+import { FullScreenSpin } from '@/components/index';
+
 import TopPageComponent from '../page-content/TopPage/TopPageComponent';
 
-export default function Page({params}: { params: Promise<{ type: string, alias: string }> }) {
+export default async function Page({params}: { params: Promise<{ type: string, alias: string }> }) {
 
-    const { type, alias } = use(params);
-    const firstCategoryItem = firstLevelMenu.find( m => m.route === type );
+  const { type, alias } = await params;
+  const firstCategoryItem = firstLevelMenu.find( m => m.route === type );
 
-    const { setAlias } = useContext(AppContext);
-    
-    useEffect(() => {
-        if (setAlias && alias) {
-          setAlias(alias);
-        } else {
-            notFound();
-        };
-      }, [alias, setAlias]);
+  const page = await getPage(alias);
 
-    if (!firstCategoryItem) notFound();
-    
-    return (
-        <>
-            <TopPageComponent
-             firstCategory={firstCategoryItem.id}          
-             />
-        </>
-    );
+  if (!page.category) notFound();
+
+  if (!firstCategoryItem) notFound();
+  
+  return (
+      <Suspense fallback={<FullScreenSpin />}>
+          <TopPageComponent
+            firstCategory={firstCategoryItem.id}     
+            page={page}
+            />
+      </Suspense>
+  );
 };
 

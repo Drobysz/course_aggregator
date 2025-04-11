@@ -29,10 +29,10 @@ export default function Page (){
     return (
         <div className={styles.wrapper}>
             {/* "About the project column"  */}
-           <div className='flex flex-col gap-14'>
-                 <h1 className={ cn( 'text-5xl text-center pt-10', oswald.className ) }>About the project</h1>
+            <div className='flex flex-col gap-14'>
+                    <h1 className={ cn( 'text-5xl text-center pt-10', oswald.className ) }>About the project</h1>
 
-                 <ul className='flex flex-col gap-16'>
+                    <ul className='flex flex-col gap-16'>
                     {
                         paragraphes.map( p => (
                             <li className='flex flex-col gap-6 w-fit' key={p.key}>
@@ -42,10 +42,10 @@ export default function Page (){
                             </li>
                         ) )
                     }
-                 </ul>
-           </div>
-           {/* "About the author" column */}
-           <Card className={ cn( 'flex flex-col gap-6 items-center p-2 pb-4 mt-16 bg-[var(--wk-blue-light)] rounded-md h-fit', styles.creatorPage ) }>
+                    </ul>
+            </div>
+            {/* "About the author" column */}
+            <Card className={ cn( 'flex flex-col gap-6 items-center p-2 pb-4 mt-16 bg-[var(--wk-blue-light)] rounded-md h-fit', styles.creatorPage ) }>
                 {/* wikipedia styled Heading tag */}
                 <Htag className='bg-[var(--wk-dark-blue)] w-full text-center' tag='h3'>Creator</Htag>
 
@@ -81,7 +81,7 @@ export default function Page (){
 
                 </div>    
                 
-           </Card>
+            </Card>
         </div>
     );
 };

@@ -5,8 +5,6 @@ import { use, useContext, useEffect, useState } from "react";
 
 // Components
 import { CategoryPage } from '@/app/[type]/page-content/CategoryPage/CategoryPage';
-
-// Dependencies
 import { Spin } from "antd";
 
 // Context

@@ -18,12 +18,6 @@ import styles from './legal.module.scss';
 // Fonts
 import { robotoMono, oswald, quicksand } from '@/fonts/fonts';
 
-// const buildAnchorLinks = ()=> {
-//     paragraphes.map( pAnchor => {
-//         return  { key: pAnchor.key, href: pAnchor.id, title: pAnchor.title };
-//     } )
-// };
-
 export default function Page (){
 
     const topRef = useRef<HTMLDivElement>(null);
@@ -46,7 +40,7 @@ export default function Page (){
                         paragraphes.map( pAnchor => {
                             return  { key: pAnchor.key, href: pAnchor.id, title: pAnchor.title };
                         } )
-                     }
+                        }
                     />
 
                 </div>
@@ -78,7 +72,7 @@ export default function Page (){
                 />
             </div>
             
-           
+            
         </div>
     );
 };

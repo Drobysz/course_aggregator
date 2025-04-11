@@ -1,5 +1,8 @@
 'use client'
 
+// Funcs
+import { getProduct } from '@/helpers/getDateFuncs';
+
 // Style
 import styles from './TopPage.module.scss'
 
@@ -11,19 +14,26 @@ import { Spin } from 'antd';
 import TopPageProps from "./TopPage.props";
 import { TopPageCategory } from '@/interfaces/page.interface';
 import { SortEnum } from '@/components/Sorting/SortingProps';
+import { ProductModel } from '@/interfaces/product.interface';
 
 // Hooks
-import { useEffect, useReducer, useContext } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 
 // A function for the reducer
 import { sortReducer } from './sorting.reducer';
 
-// Context
-import { AppContext } from '@/app/context/app.context';
+export default function TopPageComponent({firstCategory, page, }: TopPageProps){
 
+    const [ product, setProduct ] = useState<ProductModel>();
 
-export default function TopPageComponent({firstCategory}: TopPageProps){
-    const { page, product } = useContext(AppContext);
+    useEffect(()=>{
+        async function fetchProductData() {
+            const productData = await getProduct(page.category);
+
+            setProduct(productData);
+        };
+        fetchProductData();
+    }, [page.category]);
 
     const [ {products: sortedProducts, sort}, dispatchSort ] = useReducer( sortReducer, { sort: SortEnum.Rating, products: [] } );
 
@@ -33,7 +43,7 @@ export default function TopPageComponent({firstCategory}: TopPageProps){
         };
     }, [product]);
 
-    if ( product.length === 0 ) return <div className='h-full flex justify-center items-center'><Spin size='large' /></div>;
+    if ( sortedProducts.length === 0 ) return <div className='h-full flex justify-center items-center'><Spin size='large' /></div>;
     console.log(product);
     console.log(page);
 
@@ -48,11 +58,11 @@ export default function TopPageComponent({firstCategory}: TopPageProps){
                     </Htag>
                    
                     <Tag color="grey" size='m'>
-                        {product?.length !== 0 ? product?.length: "No products"}
+                        {sortedProducts.length !== 0 ? sortedProducts.length: "No products"}
                     </Tag>
                 </div>
                 {
-                   product?.length !== 0 &&
+                   sortedProducts.length !== 0 &&
                    (
                     <Sorting sort={sort} setSort={ (sort: SortEnum)=> dispatchSort({type: sort}) } className={styles.filters} />
                    ) 
