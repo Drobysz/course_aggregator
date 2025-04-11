@@ -1,5 +1,3 @@
-'use client'
-
 // Dependencies
 import cn from 'classnames';
 import parser from 'html-react-parser';
@@ -11,6 +9,9 @@ import { Htag, P, Card } from '@/components/index';
 // Styles
 import styles from './about.module.scss';
 
+// Props
+import { Metadata } from 'next';
+
 // Fonts
 import { robotoMono, oswald, quicksand } from '@/fonts/fonts';
 
@@ -21,6 +22,10 @@ import myInfo from './json/myInfo.json'
 
 // Hooks
 import { useRouter } from 'next/navigation';
+
+export const metadata: Metadata = {
+    title: 'Info about the project',
+};
 
 export default function Page (){
 

@@ -1,7 +1,7 @@
 'use client'
 
 // Funcs
-import { getProduct } from '@/helpers/getDateFuncs';
+import { getProduct } from '@/helpers/getDataFuncs';
 
 // Style
 import styles from './TopPage.module.scss'

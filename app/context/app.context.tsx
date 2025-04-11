@@ -1,5 +1,5 @@
 // Funcs
-import { getMenu } from '@/helpers/getDateFuncs';
+import { getMenu } from '@/helpers/getDataFuncs';
 
 //  Hooks
 import { createContext, ReactNode, useEffect, useState } from "react";
