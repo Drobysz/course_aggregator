@@ -4,12 +4,14 @@ import { JSX } from "react"
 import cn from 'classnames'
 import ArrowIcon from './ArrowIcon'
 
-export function Btn ({appearence, arrow='none', children, className, ...props}: BtnProps): JSX.Element{
+export function Btn ({appearence, arrow='none', children, className, size='standard', ...props}: BtnProps): JSX.Element{
     return (
     <button
         className={cn(styles.btn, className, {
             [styles.primary]: appearence == 'primary',
-            [styles.ghost]: appearence == 'ghost'
+            [styles.ghost]: appearence == 'ghost',
+            ['p-2.5']: size === 'standard',
+            ['p-5']: size === 'large'
         })}
         {...props}
     >
@@ -19,8 +21,9 @@ export function Btn ({appearence, arrow='none', children, className, ...props}: 
              && <ArrowIcon
                     className={
                         cn(styles.arrow, {
-                            [styles.down]: arrow === 'down',
-                            [styles.right]: arrow === 'right'
+                            ['rotate-90']: arrow === 'down',
+                            ['rotate-0']: arrow === 'right',
+                            ['rotate-[270deg]']: arrow === 'up',
                         })                
                     }
                 />

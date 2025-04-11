@@ -25,8 +25,6 @@ export default function Home() {
   const { setFirstCategory, menu } = useContext(AppContext);
   setFirstCategory!(TopPageCategory.Courses)
 
-  // const categories = menu.flatMap(m => m.pages.map(p => p.category));
-
   useEffect(() => {
     if (!menu || menu.length === 0) return;
   

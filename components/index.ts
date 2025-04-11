@@ -17,3 +17,4 @@ export * from './PanelScroller';
 export * from './ProductBlock/ProductBlock';
 export * from './Typewriter';
 export * from './FullScreenSpin';
+export * from './ToUpBtn';
