@@ -11,7 +11,7 @@ import { FC } from 'react';
 
 // Style
 
-import styles from './CategoryPsge.module.scss'
+import styles from './CategoryPage.module.scss'
 
 export const CategoryPage: FC<CategoryPageProps> = ( { firstCategoryName, firstCategoryRoute, menu } )=>{
 
@@ -26,9 +26,9 @@ export const CategoryPage: FC<CategoryPageProps> = ( { firstCategoryName, firstC
             <div className={styles.cardbox}>
                 {
                     menu.map( item => (
-                        <Card className='flex flex-col gap-1 p-5 rounded-lg border border-[var(--primary)] h-[150px]' key={item._id.secondCategory}>
+                        <Card className='flex flex-col gap-1 p-5 rounded-lg border border-[var(--primary)]' key={item._id.secondCategory}>
                             <Htag tag='h3'>{item._id.secondCategory}</Htag>
-                            <ul className='flex flex-col overflow-y-scroll pl-1'>
+                            <ul className='flex flex-col h-[100px] overflow-y-scroll pl-1'>
                                 {
                                     item.pages.map( p => (
                                         <Link href={`/${firstCategoryRoute}/${p.alias}`} key={p._id}>

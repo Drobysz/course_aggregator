@@ -25,6 +25,4 @@ export async function generateStaticParams (){
 
 export default async function pageWrapper( {params}: {params: {type: string, alias: string}} ) {  
       return <Page params={params}/>
-}
-
-export const revalidate = 10000;
+};

@@ -1,5 +1,3 @@
-'use client'
-
 // Layout components
 import {Header} from "./layout/Header";
 import {Sidebar} from "./layout/Sidebar";

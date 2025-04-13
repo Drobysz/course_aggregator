@@ -3,9 +3,6 @@
 // Hooks
 import { useContext, useState, useEffect } from 'react'; 
 
-// Props
-import { TopPageCategory } from "@/interfaces/page.interface";
-
 // Components
 import Image from 'next/image';
 import { Typewriter, FullScreenSpin } from '@/components/index';
@@ -22,8 +19,7 @@ import { AppContext } from '@/app/context/app.context';
 
 export default function Home() {
   const [ textValue, setTextValue ] = useState<string>('python');
-  const { setFirstCategory, menu } = useContext(AppContext);
-  setFirstCategory!(TopPageCategory.Courses)
+  const { menu } = useContext(AppContext);
 
   useEffect(() => {
     if (!menu || menu.length === 0) return;

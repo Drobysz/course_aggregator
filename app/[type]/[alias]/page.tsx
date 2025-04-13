@@ -13,7 +13,7 @@ import { FullScreenSpin } from '@/components/index';
 
 import TopPageComponent from '../page-content/TopPage/TopPageComponent';
 
-export const revalidate = 3600;
+export const revalidate = 7200;
 
 export async function generateMetaData({params}: { params: Promise<{ type: string, alias: string }> }){
   const { alias } = await params;

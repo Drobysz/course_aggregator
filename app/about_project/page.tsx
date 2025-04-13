@@ -20,16 +20,11 @@ import links from './json/links.json';
 import paragraphes from './json/paragraphes.json';
 import myInfo from './json/myInfo.json'
 
-// Hooks
-import { useRouter } from 'next/navigation';
-
 export const metadata: Metadata = {
     title: 'Info about the project',
 };
 
 export default function Page (){
-
-    const Router = useRouter();
 
     return (
         <div className={styles.wrapper}>
@@ -76,7 +71,7 @@ export default function Page (){
                                 links.map( link => (
                                     <div key={link.title} className='flex gap-2 justify-center cursor-pointer hover:text-[var(--primary)] transition-all duration-200'>
                                         <Image src={link.img} alt='#logo' width={23} height={20}/>
-                                        <li onClick={()=> Router.push(link.link)}>{link.title}</li>
+                                        <li><a href={link.link} target='_blank'>{link.title}</a></li>
                                     </div>
                                     
                                 ) )

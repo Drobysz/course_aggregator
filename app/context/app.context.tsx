@@ -1,3 +1,5 @@
+'use client'
+
 // Funcs
 import { getMenu } from '@/helpers/getDataFuncs';
 

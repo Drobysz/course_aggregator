@@ -13,7 +13,8 @@ export async function getMenu (firstCategory: number): Promise<MenuItem[]> {
         "Content-Type" : "application/json"
     },
     body: JSON.stringify({firstCategory: firstCategory}),
-    cache: "force-cache"
+    cache: "force-cache",
+    next: {revalidate: 3600}
     }).then(res => res.json());
     
     if (!menuResponse) notFound();
@@ -27,7 +28,8 @@ export async function getPage ( alias: string ): Promise<TopPageModel> {
         headers:{
         "Content-Type" : "application/json"
         },
-        cache: "force-cache"
+        cache: "force-cache",
+        next: {revalidate: 3600}
     }).then(res => res.json());
 
     if (!pageResponse) notFound();
@@ -41,8 +43,9 @@ export async function getProduct ( pageCategory: string ): Promise<ProductModel>
         headers:{
             "Content-Type" : "application/json"
         },
-        body: JSON.stringify({category: pageCategory, limit: 10}),
-        cache: "force-cache"
+        body: JSON.stringify({category: pageCategory, limit: 15}),
+        cache: "force-cache",
+        next: {revalidate: 3600}
     }).then(res => res.json());
 
     if (!productResponse) notFound();

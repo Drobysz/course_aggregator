@@ -1,37 +1,29 @@
-'use client';
-
-// Hooks
-import { use, useContext, useEffect, useState } from "react";
-
 // Components
 import { CategoryPage } from '@/app/[type]/page-content/CategoryPage/CategoryPage';
 import { Spin } from "antd";
 
-// Context
-import { AppContext } from '@/app/context/app.context';
+// Funcs
+import { getMenu } from '@/helpers/getDataFuncs';
 
 // Props
-import { firstLevelMenuItem } from '@/interfaces/menu.interface';
+import { Suspense } from 'react';
+import { FullScreenSpin } from '@/components/index';
 
 // Menu data
 import { firstLevelMenu } from '@/helpers/firstLevelMenu';
 
-export default function Page({params}: { params: Promise<{ type: string }> }){
+export const revalidate = 7200;
 
-    const { type } = use(params);
-    const { menu, setFirstCategory } = useContext(AppContext);
-    const [ firstCategoryItem, setFirstCategoryItem ] = useState<firstLevelMenuItem>(firstLevelMenu[0])
-    useEffect(()=> {
-        const firstCategoryItemDefined = firstLevelMenu.find( m => m.route === type );
-        setFirstCategoryItem(firstCategoryItemDefined!);
+export default async function Page({params}: { params: Promise<{ type: string }> }){
 
-        setFirstCategory!( firstCategoryItemDefined!.id );
-    }, [type, setFirstCategory]);
+    const { type } = await params;
+    const firstCategoryItem = firstLevelMenu.find( m => m.route === type );
+    const menu = await getMenu(firstCategoryItem!.id);
 
-    if ( (!firstCategoryItem.name) || (!menu) ){
+    if ( (!firstCategoryItem!.name) || (!menu) ){
         return <div className="h-full flex justify-center items-center"><Spin size='large'/></div>
     };
 
 
-    return <CategoryPage firstCategoryName={firstCategoryItem!.name} firstCategoryRoute={firstCategoryItem!.route} menu={menu}/>;
+    return <Suspense fallback={<FullScreenSpin />}><CategoryPage firstCategoryName={firstCategoryItem!.name} firstCategoryRoute={firstCategoryItem!.route} menu={menu}/></Suspense>;
 }
