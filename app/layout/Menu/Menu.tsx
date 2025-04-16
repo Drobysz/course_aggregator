@@ -1,12 +1,24 @@
 'use client';
 
+// Props 
 import { DetailedHTMLProps, HTMLAttributes, FC } from "react";
-import { AppContext } from './../../context/app.context';
-import { useContext } from 'react';
 import { TopPageCategory } from "@/interfaces/page.interface";
-import cn from 'classnames';
-import Link from "next/link";
 import { firstLevelMenuItem, PageItem } from "@/interfaces/menu.interface";
+
+// Context
+import { AppContext } from './../../context/app.context';
+
+// Hooks
+import { useContext } from 'react';
+
+// Dependencies
+import cn from 'classnames';
+
+// Components
+import Link from "next/link";
+import { motion } from 'framer-motion';
+
+// Navigation
 import { usePathname } from "next/navigation";
 
 // Styles
@@ -68,14 +80,29 @@ export const Menu: FC<MenuProps> = ({...props}) => {
 
     const buildSecondLevelMenu = (firstLevelMenuItem: firstLevelMenuItem)=> {
       return (
-        <div className="flex flex-col gap-5 ml-[11px] pl-8 mb-5" style={{borderLeft: "2px solid #DFDFDF"}}>
+        <div className="flex flex-col gap-5 ml-[11px] pl-8 mb-5 transition-all duration-200 ease-in-out" style={{borderLeft: "2px solid #DFDFDF"}}>
           {menu.map( m=> (
-            <div className="flex flex-col gap-1.5" key={m._id.secondCategory}>
-              <div className={styles.secondLevel} onClick={()=> changeSecondCategory(m._id.secondCategory)}>{m._id.secondCategory}</div>
-              <div className={cn(styles.secondLevelBlock, {
-                [styles.secondLevelBlockIsOpened]: m.isOpened
-              })}>{buildThirdLevelMenu(firstLevelMenuItem.route, m.pages)}</div>
-            </div>
+              <motion.div 
+                key={m._id.secondCategory}
+                className="flex flex-col gap-1.5"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className={styles.secondLevel} onClick={()=> changeSecondCategory(m._id.secondCategory)}>{m._id.secondCategory}</div>
+               
+                <motion.div 
+                  className={ styles.secondLevelBlock}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={ m.isOpened ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {buildThirdLevelMenu(firstLevelMenuItem.route, m.pages)}
+                </motion.div>
+                
+              </motion.div>
           ) )}
         </div>
       );
@@ -83,15 +110,15 @@ export const Menu: FC<MenuProps> = ({...props}) => {
 
     const buildThirdLevelMenu = (route: string, pages: PageItem[])=> {
       return (
-        <>
-          {pages.map( page=> (
-            <Link key={page._id} href={`/${route}/${page.alias}`} className={cn(styles.thirdLevel, {
-              [styles.thirdLevelIsActive]: `/${route}/${page.alias}` === pathname
-            })}>
-              {page.category}
-            </Link>
-          ) )}
-        </>
+          <>
+            {pages.map( page=> (
+                <Link key={page._id} href={`/${route}/${page.alias}`} className={cn(styles.thirdLevel, {
+                  [styles.thirdLevelIsActive]: `/${route}/${page.alias}` === pathname
+                })}>
+                  {page.category}
+                </Link>
+            ) )}
+          </>
       )
     };
 

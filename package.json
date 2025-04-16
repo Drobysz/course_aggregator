@@ -30,6 +30,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "eslint-plugin-react-hooks": "^5.1.0",
+    "framer-motion": "^12.7.3",
     "html-react-parser": "^5.2.2",
     "postcss": "^8",
     "sass": "^1.85.0",
