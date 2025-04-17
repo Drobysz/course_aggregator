@@ -1,3 +1,5 @@
+// GridLayout
+
 .wrapper {
     display: grid;
     background-color: #F5F6F8;
@@ -10,6 +12,8 @@
     "footer footer footer footer";
 }
 
+// Grid area and display setting
+
 .header {
     grid-area: header;
     display: none;
@@ -17,6 +21,7 @@
 
 .sidebar {
     grid-area: sidebar;
+    display: grid;
 }
 
 .main {
@@ -30,9 +35,11 @@
     grid-template-columns: 1fr auto auto;
 }
 
+// Mobile layout
+
 @media (max-width: 765px) {
     .header {
-        display: block;
+        display: flex;
     }
 
     .sidebar {

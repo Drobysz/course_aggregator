@@ -37,3 +37,9 @@
     justify-items: left;
     margin-bottom: 1.5rem;
 };
+
+@media (max-width: 765px) {
+    .wrapper {
+        @apply p-0;
+    };
+};

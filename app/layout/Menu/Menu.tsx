@@ -16,6 +16,7 @@ import cn from 'classnames';
 
 // Components
 import Link from "next/link";
+import { SmoothAppearence } from "@/components/index";
 import { motion } from 'framer-motion';
 
 // Navigation
@@ -34,7 +35,7 @@ type MenuProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElemen
 
 export const Menu: FC<MenuProps> = ({...props}) => {
 
-    const { menu, firstCategory, setMenu, setFirstCategory } = useContext(AppContext);
+    const { menu, firstCategory, burgerState, setMenu, setFirstCategory, setBurger } = useContext(AppContext);
     const pathname = usePathname();
 
     const firstLevelMenu: firstLevelMenuItem[] = [
@@ -82,18 +83,14 @@ export const Menu: FC<MenuProps> = ({...props}) => {
       return (
         <div className="flex flex-col gap-5 ml-[11px] pl-8 mb-5 transition-all duration-200 ease-in-out" style={{borderLeft: "2px solid #DFDFDF"}}>
           {menu.map( m=> (
-              <motion.div 
+              <SmoothAppearence 
                 key={m._id.secondCategory}
                 className="flex flex-col gap-1.5"
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
               >
                 <div className={styles.secondLevel} onClick={()=> changeSecondCategory(m._id.secondCategory)}>{m._id.secondCategory}</div>
                
                 <motion.div 
-                  className={ styles.secondLevelBlock}
+                  className={ styles.secondLevelBlock }
                   initial={{ height: 0, opacity: 0 }}
                   animate={ m.isOpened ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
                   exit={{ height: 0, opacity: 0 }}
@@ -102,7 +99,7 @@ export const Menu: FC<MenuProps> = ({...props}) => {
                   {buildThirdLevelMenu(firstLevelMenuItem.route, m.pages)}
                 </motion.div>
                 
-              </motion.div>
+              </SmoothAppearence>
           ) )}
         </div>
       );
@@ -112,9 +109,13 @@ export const Menu: FC<MenuProps> = ({...props}) => {
       return (
           <>
             {pages.map( page=> (
-                <Link key={page._id} href={`/${route}/${page.alias}`} className={cn(styles.thirdLevel, {
-                  [styles.thirdLevelIsActive]: `/${route}/${page.alias}` === pathname
-                })}>
+                <Link 
+                  onClick={()=> setBurger!(!burgerState)} 
+                  key={page._id} href={`/${route}/${page.alias}`} 
+                  className={cn(styles.thirdLevel, {
+                   [styles.thirdLevelIsActive]: `/${route}/${page.alias}` === pathname
+                   })}
+                >
                   {page.category}
                 </Link>
             ) )}

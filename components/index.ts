@@ -18,3 +18,4 @@ export * from './ProductBlock/ProductBlock';
 export * from './Typewriter';
 export * from './FullScreenSpin';
 export * from './ToUpBtn';
+export * from './SmoothAppearence';

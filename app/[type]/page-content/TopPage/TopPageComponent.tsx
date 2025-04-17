@@ -44,8 +44,8 @@ export default function TopPageComponent({firstCategory, page, }: TopPageProps){
     }, [product]);
 
     if ( sortedProducts.length === 0 ) return <div className='h-full flex justify-center items-center'><Spin size='large' /></div>;
-    console.log(product);
-    console.log(page);
+    // console.log(product);
+    // console.log(page);
 
     return (
         <div className={styles.wrapper}>

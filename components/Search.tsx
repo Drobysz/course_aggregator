@@ -27,7 +27,7 @@ export const Search: FC<SearchProps> = ({ className='none', ...props }) => {
     };
 
     return (
-        <div className={ cn(className, 'relative') } {...props}>
+        <div className={ cn(className, 'relative w-fit') } {...props}>
             <Input 
                 placeholder="search..."
                 value={search}
@@ -35,7 +35,8 @@ export const Search: FC<SearchProps> = ({ className='none', ...props }) => {
                 onKeyDown={()=> handleKeyDown}
             />
 
-            <Btn appearence="primary" 
+            <Btn 
+                appearence="primary" 
                 onClick={()=> pushTo()}
                 className="absolute top-0.5 right-0.5"
             >

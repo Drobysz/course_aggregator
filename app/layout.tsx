@@ -1,16 +1,10 @@
-// Layout components
-import {Header} from "./layout/Header";
-import {Sidebar} from "./layout/Sidebar";
-import {Footer} from "./layout/Footer";
+'use client'
 
 // Components
-import { ToUpBtn } from '@/components/index';
+import { GridLayout } from './layout/GridLayout';
 
-// style
+// Tailwind
 import "./layout/globals.css";
-
-// tailwind
-import styles from "./layout/SemanticLayout.module.scss";
 
 // Main font
 import { Noto_Sans } from 'next/font/google';
@@ -27,18 +21,9 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
   return (
     <html lang="ru" className={notoSans.className}> 
       <body>
-        <div className={styles.wrapper}>
-          <AppContextProvider>
-            <Header className={styles.header}/>
-            <Sidebar className={styles.sidebar}/>
-            <div className={styles.main}>
-              {children}
-              <ToUpBtn />
-            </div>
-            <Footer className={styles.footer}/>
-          </AppContextProvider>
-        </div>
-        
+        <AppContextProvider>
+          <GridLayout>{children}</GridLayout>
+        </AppContextProvider>
       </body>
     </html>
   );
