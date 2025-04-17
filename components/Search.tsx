@@ -1,7 +1,7 @@
 'use client'
 
 // Props
-import { FC, DetailedHTMLProps, HTMLAttributes, useState } from "react"
+import { FC, DetailedHTMLProps, HTMLAttributes, useState, KeyboardEvent } from "react"
 
 // Dependencies
 import cn from 'classnames'
@@ -32,7 +32,7 @@ export const Search: FC<SearchProps> = ({ className='none', ...props }) => {
                 placeholder="search..."
                 value={search}
                 onChange={ (e)=> setSearch(e.target.value) }
-                onKeyDown={()=> handleKeyDown}
+                onKeyDown={(e)=> handleKeyDown(e)}
             />
 
             <Btn 

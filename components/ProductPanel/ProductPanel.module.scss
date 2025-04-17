@@ -35,7 +35,7 @@
 // MIDDLE
 
 .middle {
-    @apply grid gap-[3.75rem] pb-[1.125rem] mb-3;
+    @apply gap-[3.75rem] pb-[1.125rem] mb-3;
     grid-template-columns: 1fr 1fr;
     border-bottom: 2px solid #EBEBEB;
 };
@@ -64,7 +64,7 @@
 
 // BOTTOM
 .bottom {
-    @apply flex gap-5;
+    @apply gap-5;
 };
 
 @media (max-width: 1392px) {
