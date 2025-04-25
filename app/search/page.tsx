@@ -23,7 +23,7 @@ import { useSearchParams } from 'next/navigation';
 // Funcs
 import { buildResults } from "@/helpers/usefulFuncs";
 
-export default function Search() {
+function SearchParams(){
   // query
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('q');
@@ -38,10 +38,16 @@ export default function Search() {
       const menuItems = buildResults(menu, searchQuery!);
       setMenuResults(menuItems);
   }, [searchQuery, menu]);
+  
+  return <CategoryPage menu={menuResults} firstCategoryName={searchQuery!} firstCategoryRoute={firstCategoryItem!.route} />
+};
+
+export default function Search() {
+  
 
   return (
       <Suspense fallback={<FullScreenSpin />}>
-        <CategoryPage menu={menuResults} firstCategoryName={searchQuery!} firstCategoryRoute={firstCategoryItem!.route} />
+        <SearchParams />
       </Suspense>
   );
 };
