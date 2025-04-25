@@ -14,7 +14,7 @@ import { firstLevelMenu } from '@/helpers/firstLevelMenu';
 
 export const revalidate = 7200;
 
-export default async function Page({params}: { params: Promise<{ type: string }> }){
+export default async function Page({params}: { params: { type: string } }){
 
     const { type } = await params;
     const firstCategoryItem = firstLevelMenu.find( m => m.route === type );

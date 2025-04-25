@@ -15,7 +15,7 @@ import TopPageComponent from '../page-content/TopPage/TopPageComponent';
 
 export const revalidate = 7200;
 
-export async function generateMetaData({params}: { params: Promise<{ type: string, alias: string }> }){
+export async function generateMetadata({params}: { params: { type: string, alias: string } }){
   const { alias } = await params;
   const page = await getPage(alias);
   if (!page.category) notFound();
@@ -26,7 +26,7 @@ export async function generateMetaData({params}: { params: Promise<{ type: strin
   };
 };
 
-export default async function Page({params}: { params: Promise<{ type: string, alias: string }> }) {
+export default async function Page({params}: { params: { type: string, alias: string } }) {
 
   const { type, alias } = await params;
   const firstCategoryItem = firstLevelMenu.find( m => m.route === type );
