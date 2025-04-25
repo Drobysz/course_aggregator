@@ -1,0 +1,8 @@
+version: '4'
+services:
+  app:
+    image: courses_aggregator
+    container_name: courses_aggregator_container
+    restart: always
+    ports:
+      -3000:3000
