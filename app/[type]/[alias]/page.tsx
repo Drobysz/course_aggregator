@@ -15,7 +15,29 @@ import TopPageComponent from '../page-content/TopPage/TopPageComponent';
 
 export const revalidate = 7200;
 
-export async function generateMetadata({params}: { params: { type: string, alias: string } }){
+export async function generateStaticParams (){
+    const paths: {type: string, alias: string}[] = [];
+    for(const category of firstLevelMenu){
+        const menuResponse = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {
+            method: "POST",
+            headers:{
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({firstCategory: category.id}),
+            cache: "force-cache"
+            });
+        const menuJson = await menuResponse.json();
+        for (const m of menuJson) {
+          for (const p of m.pages) {
+            paths.push({ type: category.route, alias: p.alias });
+          }
+        }
+    };
+    
+    return paths;
+};
+
+export async function generateMetadata({params}: { params: Promise<{ type: string, alias: string }> }){
   const { alias } = await params;
   const page = await getPage(alias);
   if (!page.category) notFound();
@@ -26,7 +48,7 @@ export async function generateMetadata({params}: { params: { type: string, alias
   };
 };
 
-export default async function Page({params}: { params: { type: string, alias: string } }) {
+export default async function Page({params}: { params: Promise<{ type: string, alias: string }> }) {
 
   const { type, alias } = await params;
   const firstCategoryItem = firstLevelMenu.find( m => m.route === type );

@@ -12,9 +12,13 @@ import { FullScreenSpin } from '@/components/index';
 // Menu data
 import { firstLevelMenu } from '@/helpers/firstLevelMenu';
 
+export async function generateStaticParams (){
+    return firstLevelMenu.map( m => ( { type: m.route } ) );
+};
+
 export const revalidate = 7200;
 
-export default async function Page({params}: { params: { type: string } }){
+export default async function Page({params}: { params: Promise<{ type: string }> }){
 
     const { type } = await params;
     const firstCategoryItem = firstLevelMenu.find( m => m.route === type );

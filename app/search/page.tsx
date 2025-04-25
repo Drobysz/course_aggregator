@@ -6,6 +6,10 @@ import { CategoryPage } from "@/app/[type]/page-content/CategoryPage/CategoryPag
 // Context
 import { AppContext } from "@/app/context/app.context";
 
+// Components
+import { Suspense } from "react";
+import { FullScreenSpin } from '@/components/index';
+
 // Hooks
 import { useContext, useEffect, useState } from "react";
 
@@ -36,6 +40,8 @@ export default function Search() {
   }, [searchQuery, menu]);
 
   return (
-      <CategoryPage menu={menuResults} firstCategoryName={searchQuery!} firstCategoryRoute={firstCategoryItem!.route} />
+      <Suspense fallback={<FullScreenSpin />}>
+        <CategoryPage menu={menuResults} firstCategoryName={searchQuery!} firstCategoryRoute={firstCategoryItem!.route} />
+      </Suspense>
   );
 };
